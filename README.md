@@ -2,8 +2,6 @@
 
 ![ts-paginator](./assets/Screenshot%202023-03-17%20at%2012.27.49.png)
 
----
-
 > ### `ts-paginator` is a TypeScript pagination hook for React or NextJS
 
 ## Args
@@ -57,3 +55,5 @@ function MyComponent() {
   return <p>{message}</p>;
 }
 ```
+
+<img alt="GitHub last commit (by committer)" src="https://img.shields.io/github/last-commit/wnortier/ts-paginator">

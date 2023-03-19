@@ -1,6 +1,6 @@
 {
   "name": "ts-paginator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript pagination module with helper functions intended for frontend development",
   "main": "lib/ts-paginator.js",
   "types": "lib/ts-paginator.d.ts",
@@ -10,12 +10,11 @@
     "build": "rm -rf lib && tsc",
     "format": "prettier --write \"**/*.ts\" \"**/*.js\"",
     "lint": "tslint -p tsconfig.json",
-    "prepare" : "npm run build",
-    "prepublishOnly" : "npm test && npm run lint",
-    "preversion" : "npm run lint",
-    "version" : "npm run format && git add -A src",
-    "postversion" : "git push && git push --tags"
-
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",

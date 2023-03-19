@@ -24,6 +24,8 @@
 
 ## Example
 
+`npm i --save ts-paginator`
+
 ```js
 import tsPaginator from 'ts-paginator';
 

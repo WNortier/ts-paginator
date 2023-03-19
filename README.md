@@ -86,4 +86,11 @@ function MyComponent() {
 }
 ```
 
-![Alt Text](./assets/ts-paginator.gif)
+<br />
+
+## Example
+
+https://github.com/WNortier/ts-paginator-example
+
+![ts-paginator-example](./assets/ts-paginator.gif)
+

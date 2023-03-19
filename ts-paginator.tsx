@@ -129,9 +129,9 @@ const useTsPaginator = (
       }
       default: {
         // handle first three currentPage values
-        if (currentPage === 1) paginationPages = [1, 2, 3, 4, 5, 0, pageCount];
-        else if (currentPage === 2) paginationPages = [1, 2, 3, 4, 0, pageCount];
-        else if (currentPage === 3) paginationPages = [1, 2, 3, 4, 5, 0, pageCount];
+        if (currentPage === 0) paginationPages = [1, 2, 3, 4, 5, 0, pageCount];
+        else if (currentPage === 1) paginationPages = [1, 2, 3, 4, 0, pageCount];
+        else if (currentPage === 2) paginationPages = [1, 2, 3, 4, 5, 0, pageCount];
         // handle last three currentPage values
         else if (currentPage === pageCount)
           paginationPages = [1, 0, currentPage - 4, currentPage - 3, currentPage - 2, currentPage - 1, currentPage];

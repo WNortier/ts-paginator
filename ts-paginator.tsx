@@ -2,8 +2,8 @@ import React from 'react';
 /**
  * A helper function for pagination
  * @totalRecordCount Variable The total count of records
- * @rowsPerPage Variable The current rows per page selection
  * @currentPage Variable The current page selection (zero indexed)
+ * @rowsPerPage Variable The current rows per page selection
  * @_handleChangePage Function to change the @currentPage value
  * @_handleChangeRowsPerPage Function to handle the @rowsPerPage value
  * @returns
@@ -11,8 +11,8 @@ import React from 'react';
 type rowsPerPagePropVal = 10;
 const useTsPaginator = (
   totalRecordCountProp: number,
-  rowsPerPageProp: rowsPerPagePropVal = 10,
   currentPageProp: number,
+  rowsPerPageProp: rowsPerPagePropVal = 10,
 ): {
   totalRecordCount: number;
   rowsPerPage: number;

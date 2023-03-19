@@ -40,7 +40,7 @@ Instantiate the `useTsPaginator` hook with the following arguments:
 | ---------------------------------- | ------------------------------------------------------------ | -------------------------- | ----------- | ---------------------------------- |
 | `determinePaginationMessage`       | Calculates the pagination message                            | `options?: {verb: string}` | string      | `Displaying 1 to 10 of 20 records` |
 | `determineRowsPerPageOptions`      | Calculates the rows per page options                         |                            | number[]    | `[10]`                             |
-| `determinePaginationPages` | Calculates the pagination pages |                            | number[]     | `[1, 2]`             
+| `determinePaginationPages` | Calculates the pagination pages and uses `0` as a range placeholder for page ranges greather than three |                            | number[]     | `[1, 2]`             
 | `determinePaginationDisabledState` | Can be used to disable the previous page or next page button |                            | boolean     | `true`                             |
 
 <br />

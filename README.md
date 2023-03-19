@@ -52,15 +52,15 @@ function MyComponent() {
     totalRecordCount,
     rowsPerPage,
     currentPage,
-    determinePaginationMessage,
-    determinePaginationDisabledState,
-    determineRowsPerPageOptions,
-    handleChangeTotalRecordCount,
-    handleChangeRowsPerPage,
-    handleChangePage,
+    _determinePaginationMessage,
+    _determinePaginationDisabledState,
+    _determineRowsPerPageOptions,
+    _handleChangeTotalRecordCount,
+    _handleChangeRowsPerPage,
+    _handleChangePage,
   } = useTsPaginator(20, 10, 0);
 
-  const message = determinePaginationMessage({ verb: 'Showing' }); // Showing 1 to 10 of 10 records
+  const message = _determinePaginationMessage({ verb: 'Showing' }); // Showing 1 to 10 of 20 records
 
   return <p>{message}</p>;
 }

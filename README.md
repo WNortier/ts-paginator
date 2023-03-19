@@ -56,6 +56,8 @@ function MyComponent() {
 }
 ```
 
-<img alt="npm type definitions" src="https://img.shields.io/npm/types/ts-paginator">
-<img alt="npm" src="https://img.shields.io/npm/v/ts-pagination">
-<img alt="GitHub last commit (by committer)" src="https://img.shields.io/github/last-commit/wnortier/ts-paginator">
+<div style="display: flex">
+    <img alt="npm type definitions" src="https://img.shields.io/npm/types/ts-paginator">
+    <img alt="npm" src="https://img.shields.io/npm/v/ts-pagination">
+    <img alt="GitHub last commit (by committer)" src="https://img.shields.io/github/last-commit/wnortier/ts-paginator">
+</div>

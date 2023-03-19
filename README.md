@@ -24,11 +24,11 @@ Instantiate `tsPaginator` with the following arguments
 
 ## State Altering Functions
 
-| function                       | Description                    | Args                           | Return Type | Example Returns                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ----------- | ---------------------------------- |
-| `handleChangeTotalRecordCount` | Changes the total record count | Changes the total record count | void        | `Displaying 1 to 10 of 10 records` |
-| `handleChangeRowsPerPage`      | Changes the rows per page      | Changes the rows per page      | void        | void                               |
-| `handleChangePage`             | Changes the current page       | Changes the rows per page      | void        | void                               |
+| function                       | Description                    | Args                           | Return Type |
+| ------------------------------ | ------------------------------ | ------------------------------ | ----------- |
+| `handleChangeTotalRecordCount` | Changes the total record count | Changes the total record count | void        |
+| `handleChangeRowsPerPage`      | Changes the rows per page      | Changes the rows per page      | void        |
+| `handleChangePage`             | Changes the current page       | Changes the rows per page      | void        |
 
 ## Example
 
@@ -55,6 +55,7 @@ function MyComponent() {
   return <p>{message}</p>;
 }
 ```
+
 <img alt="npm type definitions" src="https://img.shields.io/npm/types/ts-paginator">
 <img alt="npm" src="https://img.shields.io/npm/v/ts-pagination">
 <img alt="GitHub last commit (by committer)" src="https://img.shields.io/github/last-commit/wnortier/ts-paginator">

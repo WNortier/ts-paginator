@@ -26,15 +26,15 @@ Instantiate the `useTsPaginator` hook with the following arguments:
 | ---------------------------------- | ------------------------------------ | -------------------------- | ----------- | ---------------------------------- |
 | `determinePaginationMessage`       | Calculates the pagination message    | `options?: {verb: string}` | string      | `Displaying 1 to 10 of 10 records` |
 | `determineRowsPerPageOptions`      | Calculates the rows per page options |                            | number[]    | `[10]`                             |
-| `determinePaginationDisabledState` | The current page selection           |                            | boolean     | `true`                             |
+| `determinePaginationDisabledState` | Can be used to disable the previous page or next page button           |                            | boolean     | `true`                             |
 
 ## State Altering Functions
 
 | Function                       | Description                    | Args                           | Return Type |
 | ------------------------------ | ------------------------------ | ------------------------------ | ----------- |
-| `handleChangeTotalRecordCount` | Changes the total record count | Changes the total record count | void        |
-| `handleChangeRowsPerPage`      | Changes the rows per page      | Changes the rows per page      | void        |
-| `handleChangePage`             | Changes the current page       | Changes the rows per page      | void        |
+| `handleChangeTotalRecordCount` | Changes the total record count | `newTotalRecordCount: number` | void        |
+| `handleChangeRowsPerPage`      | Changes the rows per page      | `newRowsPerPage: number`     | void        |
+| `handleChangePage`             | Changes the current page       | `newPage: number`      | void        |
 
 ## Extra Functions
 

@@ -1,5 +1,11 @@
 # ts-paginator
 
+<div style="display: flex">
+    <img alt="npm type definitions" src="https://img.shields.io/npm/types/ts-paginator">
+    <img alt="npm" src="https://img.shields.io/npm/v/ts-pagination">
+    <img alt="GitHub last commit (by committer)" src="https://img.shields.io/github/last-commit/wnortier/ts-paginator">
+</div>
+
 ![ts-paginator](./assets/Screenshot%202023-03-17%20at%2012.27.49.png)
 
 > ### `ts-paginator` is a TypeScript pagination hook for React or NextJS
@@ -56,8 +62,4 @@ function MyComponent() {
 }
 ```
 
-<div style="display: flex">
-    <img alt="npm type definitions" src="https://img.shields.io/npm/types/ts-paginator">
-    <img alt="npm" src="https://img.shields.io/npm/v/ts-pagination">
-    <img alt="GitHub last commit (by committer)" src="https://img.shields.io/github/last-commit/wnortier/ts-paginator">
-</div>
+

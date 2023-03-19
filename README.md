@@ -14,27 +14,27 @@
 
 Instantiate the `useTsPaginator` hook with the following arguments:
 
-| Args                        | Description                               |
-| --------------------------- | ----------------------------------------- |
-| `totalRecordCount: number` | The total count of records                |
-| `rowsPerPage: number`      | The current rows per page selection       |
-| `currentPage: number`      | The current page selection (zero indexed) |
+| Args                            | Description                               |
+| ------------------------------- | ----------------------------------------- |
+| `totalRecordCount: number`      | The total count of records                |
+| `rowsPerPage?: 10` (default 10) | The current rows per page selection       |
+| `currentPage: number`           | The current page selection (zero indexed) |
 
 ## UI/UX Functions
 
-| Function                           | Description                          | Args                       | Return Type | Example Returns                    |
-| ---------------------------------- | ------------------------------------ | -------------------------- | ----------- | ---------------------------------- |
-| `determinePaginationMessage`       | Calculates the pagination message    | `options?: {verb: string}` | string      | `Displaying 1 to 10 of 10 records` |
-| `determineRowsPerPageOptions`      | Calculates the rows per page options |                            | number[]    | `[10]`                             |
-| `determinePaginationDisabledState` | Can be used to disable the previous page or next page button           |                            | boolean     | `true`                             |
+| Function                           | Description                                                  | Args                       | Return Type | Example Returns                    |
+| ---------------------------------- | ------------------------------------------------------------ | -------------------------- | ----------- | ---------------------------------- |
+| `determinePaginationMessage`       | Calculates the pagination message                            | `options?: {verb: string}` | string      | `Displaying 1 to 10 of 10 records` |
+| `determineRowsPerPageOptions`      | Calculates the rows per page options                         |                            | number[]    | `[10]`                             |
+| `determinePaginationDisabledState` | Can be used to disable the previous page or next page button |                            | boolean     | `true`                             |
 
 ## State Altering Functions
 
-| Function                       | Description                    | Args                           | Return Type |
-| ------------------------------ | ------------------------------ | ------------------------------ | ----------- |
+| Function                       | Description                    | Args                          | Return Type |
+| ------------------------------ | ------------------------------ | ----------------------------- | ----------- |
 | `handleChangeTotalRecordCount` | Changes the total record count | `newTotalRecordCount: number` | void        |
-| `handleChangeRowsPerPage`      | Changes the rows per page      | `newRowsPerPage: number`     | void        |
-| `handleChangePage`             | Changes the current page       | `newPage: number`      | void        |
+| `handleChangeRowsPerPage`      | Changes the rows per page      | `newRowsPerPage: number`      | void        |
+| `handleChangePage`             | Changes the current page       | `newPage: number`             | void        |
 
 ## Extra Functions
 
@@ -58,7 +58,7 @@ function MyComponent() {
     _handleChangeTotalRecordCount,
     _handleChangeRowsPerPage,
     _handleChangePage,
-  } = useTsPaginator(20, 10, 0);
+  } = useTsPaginator(20, 0);
 
   const message = _determinePaginationMessage({ verb: 'Showing' }); // Showing 1 to 10 of 20 records
 

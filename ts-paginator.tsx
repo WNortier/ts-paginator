@@ -8,9 +8,10 @@ import React from 'react';
  * @_handleChangeRowsPerPage Function to handle the @rowsPerPage value
  * @returns
  */
+type rowsPerPageProp = 10;
 const useTsPaginator = (
   totalRecordCountProp: number,
-  rowsPerPageProp: number,
+  rowsPerPageProp: rowsPerPageProp = 10,
   currentPageProp: number,
 ): {
   totalRecordCount: number;

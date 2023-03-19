@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "target": "es5",
     "module": "commonjs",
     "declaration": true,
@@ -7,5 +8,5 @@
     "strict": true,
     "esModuleInterop": true
   },
-  "exclude": ["node_modules", "/__tests__/paginator.test.ts", "lib"]
+  "exclude": ["node_modules", "/__tests__/paginator.test.ts", "lib"],
 }

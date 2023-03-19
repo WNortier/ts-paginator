@@ -12,29 +12,33 @@
 
 ## Args
 
-Instantiate `tsPaginator` with the following arguments
+Instantiate the `useTsPaginator` hook with the following arguments:
 
-| arg                | Description                               |
-| ------------------ | ----------------------------------------- |
-| `totalRecordCount` | The total count of records                |
-| `rowsPerPage`      | The current rows per page selection       |
-| `currentPage`      | The current page selection (zero indexed) |
+| Args                        | Description                               |
+| --------------------------- | ----------------------------------------- |
+| `totalRecordCount: number` | The total count of records                |
+| `rowsPerPage: number`      | The current rows per page selection       |
+| `currentPage: number`      | The current page selection (zero indexed) |
 
 ## UI/UX Functions
 
-| function                           | Description                          | Args                     | Return Type | Example Returns                    |
-| ---------------------------------- | ------------------------------------ | ------------------------ | ----------- | ---------------------------------- |
-| `determinePaginationMessage`       | Calculates the pagination message    | options?: {verb: string} | string      | `Displaying 1 to 10 of 10 records` |
-| `determineRowsPerPageOptions`      | Calculates the rows per page options |                          | number[]    | `[10]`                             |
-| `determinePaginationDisabledState` | The current page selection           |                          | boolean     | `true`                             |
+| Function                           | Description                          | Args                       | Return Type | Example Returns                    |
+| ---------------------------------- | ------------------------------------ | -------------------------- | ----------- | ---------------------------------- |
+| `determinePaginationMessage`       | Calculates the pagination message    | `options?: {verb: string}` | string      | `Displaying 1 to 10 of 10 records` |
+| `determineRowsPerPageOptions`      | Calculates the rows per page options |                            | number[]    | `[10]`                             |
+| `determinePaginationDisabledState` | The current page selection           |                            | boolean     | `true`                             |
 
 ## State Altering Functions
 
-| function                       | Description                    | Args                           | Return Type |
+| Function                       | Description                    | Args                           | Return Type |
 | ------------------------------ | ------------------------------ | ------------------------------ | ----------- |
 | `handleChangeTotalRecordCount` | Changes the total record count | Changes the total record count | void        |
 | `handleChangeRowsPerPage`      | Changes the rows per page      | Changes the rows per page      | void        |
 | `handleChangePage`             | Changes the current page       | Changes the rows per page      | void        |
+
+## Extra Functions
+
+Not required to build working pagination, but might be useful. Coming soon.
 
 ## Example
 
@@ -61,5 +65,3 @@ function MyComponent() {
   return <p>{message}</p>;
 }
 ```
-
-

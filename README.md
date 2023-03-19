@@ -85,3 +85,5 @@ function MyComponent() {
   return <p>{message}</p>;
 }
 ```
+
+![Alt Text](./assets/ts-paginator.gif)

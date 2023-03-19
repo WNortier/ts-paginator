@@ -22,7 +22,7 @@ const useTsPaginator = (
   totalRecordCount: number;
   rowsPerPage: number;
   currentPage: number;
-  _determinePaginationMessage: (options?: { verb: PaginationMessageVerb }) => string;
+  _determinePaginationMessage: (options?: { verb: PaginationMessageVerb.DISPLAYING | PaginationMessageVerb.SHOWING }) => string;
   _determineRowsPerPageOptions: () => number[];
   _determinePaginationDisabledState: () => boolean;
   _handleChangeTotalRecordCount: (newTotalRecordCount: number) => void;
@@ -91,7 +91,7 @@ const useTsPaginator = (
     return endPoint;
   }
 
-  function _determinePaginationMessage(options?: { verb: PaginationMessageVerb }): string {
+  function _determinePaginationMessage(options?: { verb: PaginationMessageVerb.DISPLAYING | PaginationMessageVerb.SHOWING }): string {
     const startingPoint = determinePaginationStartingPoint();
     const endPoint = determinePaginationEndPoint();
     const verb = options ? options.verb : PaginationMessageVerb.DISPLAYING;

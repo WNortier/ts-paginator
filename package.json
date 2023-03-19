@@ -4,6 +4,7 @@
   "description": "TypeScript pagination module with helper functions intended for frontend development",
   "main": "lib/ts-paginator.js",
   "types": "lib/ts-paginator.d.ts",
+  "type": "module",
   "scripts": {
     "test": "jest --config jestconfig.json",
     "test:watch": "jest --config jestconfig.json --watch",

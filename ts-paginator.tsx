@@ -23,6 +23,7 @@ const useTsPaginator = (
   currentPage: number;
   _determinePaginationMessage: (options?: { verb: 'Showing' | 'Displaying' }) => string;
   _determineRowsPerPageOptions: () => number[];
+  _determinePaginationPages: () => number[];
   _determinePaginationDisabledState: () => boolean;
   _handleChangeTotalRecordCount: (newTotalRecordCount: number) => void;
   _handleChangeRowsPerPage: (newRowsPerPage: number) => void;
@@ -81,7 +82,6 @@ const useTsPaginator = (
   function determinePaginationEndPoint(): number {
     let endPoint: number | undefined;
     const startingPoint = determinePaginationStartingPoint();
-
     endPoint = Math.min(startingPoint + rowsPerPage, totalRecordCount) - 1;
     let theCurrentPage = currentPage;
     if (++theCurrentPage === determinePageCount(totalRecordCount, rowsPerPage))
@@ -97,12 +97,20 @@ const useTsPaginator = (
     const message = `${verb} ${startingPoint} to ${endPoint} of ${totalRecordCount} records`;
     return message;
   }
+  // returns an array with the pagination pages, 0 being a range placeholder
+  function _determinePaginationPages(): number[] {
+    const paginationPages: number[] = [];
+    const pageCount = determinePageCount(totalRecordCount, rowsPerPage);
+    if (pageCount === 3) paginationPages.push(1, 2, 3)
+    else if (pageCount > 3) paginationPages.push(1, 0, pageCount)
+    else if (pageCount === 2) paginationPages.push(1, 2)
+    else paginationPages.push(1);
+    return paginationPages;
+  }
   // disable the ability to change the page if the records are below 10
   function _determinePaginationDisabledState(): boolean {
-    let startingPoint: number | undefined;
-    let endPoint: number | undefined;
-    startingPoint = rowsPerPage * currentPage + 1;
-    endPoint = Math.min(startingPoint + rowsPerPage, totalRecordCount) - 1;
+    const startingPoint = determinePaginationStartingPoint();
+    let endPoint = determinePaginationEndPoint();
     let theCurrentPage = currentPage;
     if (++theCurrentPage === determinePageCount(totalRecordCount, rowsPerPage))
       endPoint = Math.min(startingPoint + rowsPerPage, totalRecordCount);
@@ -129,6 +137,7 @@ const useTsPaginator = (
     //
     _determinePaginationMessage,
     _determineRowsPerPageOptions,
+    _determinePaginationPages,
     _determinePaginationDisabledState,
     //
     _handleChangeTotalRecordCount,

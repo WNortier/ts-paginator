@@ -100,12 +100,61 @@ const useTsPaginator = (
   }
 
   function _determinePaginationPages(): number[] {
-    const paginationPages: number[] = [];
+    let paginationPages: number[] = [];
     const pageCount = determinePageCount(totalRecordCount, rowsPerPage);
-    if (pageCount === 3) paginationPages.push(1, 2, 3)
-    else if (pageCount > 3) paginationPages.push(1, 0, pageCount)
-    else if (pageCount === 2) paginationPages.push(1, 2)
-    else paginationPages.push(1);
+    switch (pageCount) {
+      case 1: {
+        paginationPages = [1];
+        break;
+      }
+      case 2: {
+        paginationPages = [1, 2];
+        break;
+      }
+      case 3: {
+        paginationPages = [1, 2, 3];
+        break;
+      }
+      case 4: {
+        paginationPages = [1, 2, 3, 4];
+        break;
+      }
+      case 5: {
+        paginationPages = [1, 2, 3, 4, 5];
+        break;
+      }
+      case 6: {
+        paginationPages = [1, 2, 3, 4, 5, 6];
+        break;
+      }
+      default: {
+        // handle first three currentPage values
+        if (currentPage === 1) paginationPages = [1, 2, 3, 4, 5, 0, pageCount];
+        else if (currentPage === 2) paginationPages = [1, 2, 3, 4, 0, pageCount];
+        else if (currentPage === 3) paginationPages = [1, 2, 3, 4, 5, 0, pageCount];
+        // handle last three currentPage values
+        else if (currentPage === pageCount)
+          paginationPages = [1, 0, currentPage - 4, currentPage - 3, currentPage - 2, currentPage - 1, currentPage];
+        else if (currentPage === pageCount - 1)
+          paginationPages = [1, 0, currentPage - 2, currentPage - 1, currentPage, pageCount];
+        else if (currentPage === pageCount - 2)
+          paginationPages = [1, 0, currentPage - 2, currentPage - 1, currentPage, currentPage + 1, pageCount];
+        // handle others
+        else
+          paginationPages = [
+            1,
+            0,
+            currentPage - 2,
+            currentPage - 1,
+            currentPage,
+            currentPage + 1,
+            currentPage + 2,
+            0,
+            pageCount,
+          ];
+        break;
+      }
+    }
     return paginationPages;
   }
   // disable the ability to change the page if the records are below 10

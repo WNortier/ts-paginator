@@ -58,7 +58,7 @@ describe('ts-paginator', () => {
     });
   });
   describe('ts-paginator with 351 records', () => {
-    const { result } = renderHook(() => useTsPaginator(351, 1));
+    const { result } = renderHook(() => useTsPaginator(351, 5));
     const {
       totalRecordCount,
       rowsPerPage,
@@ -74,10 +74,10 @@ describe('ts-paginator', () => {
     test('It should initialize correctly with 21 records', () => {
       expect(totalRecordCount).toBe(351);
       expect(rowsPerPage).toBe(10);
-      expect(currentPage).toBe(1);
+      expect(currentPage).toBe(5);
     });
     test('It should calc the pagination message', () => {
-      expect(_determinePaginationMessage()).toBe('Displaying 11 to 20 of 351 records');
+      expect(_determinePaginationMessage()).toBe('Displaying 51 to 60 of 351 records');
     });
     test('It should calc the options for the rows per page', () => {
       expect(_determineRowsPerPageOptions()).toEqual([10, 25, 50, 100]);
@@ -86,7 +86,7 @@ describe('ts-paginator', () => {
       expect(_determinePaginationDisabledState()).toBe(false);
     });
     test('It should calc the pagination pages', () => {
-      expect(_determinePaginationPages()).toEqual([1, 0, 36]);
+      expect(_determinePaginationPages()).toEqual([1, 0, 3, 4, 5, 6, 7, 0, 36]);
     });
   });
 });

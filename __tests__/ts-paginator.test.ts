@@ -1,7 +1,7 @@
 import useTsPaginator from '../ts-paginator';
 import { renderHook } from '@testing-library/react';
 describe('ts-paginator', () => {
-  const { result } = renderHook(() => useTsPaginator(20, 10, 0));
+  const { result } = renderHook(() => useTsPaginator(20, 0));
   const {
     totalRecordCount,
     rowsPerPage,

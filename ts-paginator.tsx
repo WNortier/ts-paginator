@@ -82,7 +82,6 @@ const useTsPaginator = (
   function determinePaginationEndPoint(): number {
     let endPoint: number | undefined;
     const startingPoint = determinePaginationStartingPoint();
-
     endPoint = Math.min(startingPoint + rowsPerPage, totalRecordCount) - 1;
     let theCurrentPage = currentPage;
     if (++theCurrentPage === determinePageCount(totalRecordCount, rowsPerPage))
@@ -108,10 +107,8 @@ const useTsPaginator = (
   }
   // disable the ability to change the page if the records are below 10
   function _determinePaginationDisabledState(): boolean {
-    let startingPoint: number | undefined;
-    let endPoint: number | undefined;
-    startingPoint = rowsPerPage * currentPage + 1;
-    endPoint = Math.min(startingPoint + rowsPerPage, totalRecordCount) - 1;
+    const startingPoint = determinePaginationStartingPoint();
+    let endPoint = determinePaginationEndPoint();
     let theCurrentPage = currentPage;
     if (++theCurrentPage === determinePageCount(totalRecordCount, rowsPerPage))
       endPoint = Math.min(startingPoint + rowsPerPage, totalRecordCount);

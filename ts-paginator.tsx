@@ -46,15 +46,6 @@ const useTsPaginator = (
     _determinePaginationPages()
   }, [rowsPerPage]);
 
-  React.useEffect(() => {
-    return () => {
-      setCurrentPage(0)
-      _determinePaginationMessage();
-      _determinePaginationDisabledState();
-      _determinePaginationPages()
-    };
-  }, []);
-
   // determine count works out how many pages there are
   function determinePageCount(trc: number, rpp: number): number {
     const calculateCount = trc / rpp;

@@ -1,10 +1,4 @@
 import React from 'react';
-
-enum PaginationMessageVerb {
-  DISPLAYING = 'Displaying',
-  SHOWING = 'Showing',
-}
-
 /**
  * A helper function for pagination
  * @totalRecordCount Variable The total count of records
@@ -22,7 +16,7 @@ const useTsPaginator = (
   totalRecordCount: number;
   rowsPerPage: number;
   currentPage: number;
-  _determinePaginationMessage: (options?: { verb: PaginationMessageVerb.DISPLAYING | PaginationMessageVerb.SHOWING }) => string;
+  _determinePaginationMessage: (options?: { verb: 'Showing' | 'Displaying' }) => string;
   _determineRowsPerPageOptions: () => number[];
   _determinePaginationDisabledState: () => boolean;
   _handleChangeTotalRecordCount: (newTotalRecordCount: number) => void;
@@ -91,10 +85,10 @@ const useTsPaginator = (
     return endPoint;
   }
 
-  function _determinePaginationMessage(options?: { verb: PaginationMessageVerb.DISPLAYING | PaginationMessageVerb.SHOWING }): string {
+  function _determinePaginationMessage(options?: { verb: 'Displaying' | 'Showing' }): string {
     const startingPoint = determinePaginationStartingPoint();
     const endPoint = determinePaginationEndPoint();
-    const verb = options ? options.verb : PaginationMessageVerb.DISPLAYING;
+    const verb = options ? options.verb : 'Displaying';
     const message = `${verb} ${startingPoint} to ${endPoint} of ${totalRecordCount} records`;
     return message;
   }

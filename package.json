@@ -1,6 +1,6 @@
 {
   "name": "ts-paginator",
-  "version": "1.2.15",
+  "version": "1.2.16",
   "description": "TypeScript pagination module with helper functions intended for frontend development",
   "main": "lib/ts-paginator.js",
   "types": "lib/ts-paginator.d.ts",

@@ -5,7 +5,7 @@ on: [workflow_dispatch, push, pull_request]
 jobs:
   prettify-and-lint:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Fetch repository
         uses: actions/checkout@v3
       - name: Install dependencies

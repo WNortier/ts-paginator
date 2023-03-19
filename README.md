@@ -1,9 +1,15 @@
 # ts-paginator
 
+<div style="display: flex">    
+  <img style="margin-right: 10px" alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/wnortier/ts-paginator/pipeline.yml">
+  <img style="margin-right: 10px" alt="GitHub last commit (by committer)" src="https://img.shields.io/github/last-commit/wnortier/ts-paginator">
+</div>
+
+<br />
+
 <div style="display: flex">
-    <img style="margin-right: 10px" alt="npm type definitions" src="https://img.shields.io/npm/types/ts-paginator">
     <img style="margin-right: 10px" alt="npm" src="https://img.shields.io/npm/v/ts-pagination">
-    <img style="margin-right: 10px" alt="GitHub last commit (by committer)" src="https://img.shields.io/github/last-commit/wnortier/ts-paginator">
+    <img style="margin-right: 10px" alt="npm type definitions" src="https://img.shields.io/npm/types/ts-paginator">
 </div>
 
 <br />

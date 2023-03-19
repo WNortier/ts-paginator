@@ -8,5 +8,5 @@
     "strict": true,
     "esModuleInterop": true
   },
-  "exclude": ["node_modules", "/__tests__/paginator.test.ts", "lib"],
+  "exclude": ["node_modules", "/__tests__/paginator.test.ts", "lib"]
 }

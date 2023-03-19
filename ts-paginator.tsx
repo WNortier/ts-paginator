@@ -10,39 +10,43 @@ enum PaginationMessageVerb {
  * @totalRecordCount Variable The total count of records
  * @rowsPerPage Variable The current rows per page selection
  * @currentPage Variable The current page selection (zero indexed)
- * @handleChangePage Function to change the @currentPage value (coming soon)
- * @handleChangeRowsPerPage Function to handle the @rowsPerPage value (coming soon)
+ * @_handleChangePage Function to change the @currentPage value
+ * @_handleChangeRowsPerPage Function to handle the @rowsPerPage value
  * @returns
  */
-const useTsPaginator = (totalRecordCountProp: number, rowsPerPageProp: number, currentPageProp: number): {
-  totalRecordCount: number,
-  rowsPerPage: number,
-  currentPage: number,
-  determinePaginationMessage: (options?: { verb: PaginationMessageVerb }) => string,
-  determineRowsPerPageOptions: () => number[],
-  determinePaginationDisabledState: () => boolean,
-  handleChangeTotalRecordCount: (newTotalRecordCount: number) => void,
-  handleChangeRowsPerPage: (newRowsPerPage: number) => void,
-  handleChangePage: (newPage: number) => void,
+const useTsPaginator = (
+  totalRecordCountProp: number,
+  rowsPerPageProp: number,
+  currentPageProp: number,
+): {
+  totalRecordCount: number;
+  rowsPerPage: number;
+  currentPage: number;
+  _determinePaginationMessage: (options?: { verb: PaginationMessageVerb }) => string;
+  _determineRowsPerPageOptions: () => number[];
+  _determinePaginationDisabledState: () => boolean;
+  _handleChangeTotalRecordCount: (newTotalRecordCount: number) => void;
+  _handleChangeRowsPerPage: (newRowsPerPage: number) => void;
+  _handleChangePage: (newPage: number) => void;
 } => {
   const [totalRecordCount, setTotalRecordCount] = React.useState<number>(totalRecordCountProp);
   const [rowsPerPage, setRowsPerPage] = React.useState<number>(rowsPerPageProp);
   const [currentPage, setCurrentPage] = React.useState<number>(currentPageProp);
 
   React.useEffect(() => {
-    determineRowsPerPageOptions()
-    determinePaginationMessage()
-    determinePaginationDisabledState()
-  }, [totalRecordCount])
+    _determineRowsPerPageOptions();
+    _determinePaginationMessage();
+    _determinePaginationDisabledState();
+  }, [totalRecordCount]);
 
   React.useEffect(() => {
-    determinePaginationMessage()
-    determinePaginationDisabledState()
-  }, [rowsPerPage])
+    _determinePaginationMessage();
+    _determinePaginationDisabledState();
+  }, [rowsPerPage]);
 
   React.useEffect(() => {
-    return () => setCurrentPage(0)
-  }, [])
+    return () => setCurrentPage(0);
+  }, []);
 
   // determine count works out how many pages there are
   function determinePageCount(trc: number, rpp: number): number {
@@ -56,7 +60,7 @@ const useTsPaginator = (totalRecordCountProp: number, rowsPerPageProp: number, c
   }
 
   // returns an array consisting of the rows pre page options
-  function determineRowsPerPageOptions(): number[] {
+  function _determineRowsPerPageOptions(): number[] {
     const rowsPerPageOption: number[] = [];
     if (totalRecordCount < 10) rowsPerPageOption.push(10);
     else if (totalRecordCount % 10 > 0 || totalRecordCount % 10 === 0) {
@@ -87,7 +91,7 @@ const useTsPaginator = (totalRecordCountProp: number, rowsPerPageProp: number, c
     return endPoint;
   }
 
-  function determinePaginationMessage(options?: { verb: PaginationMessageVerb }): string {
+  function _determinePaginationMessage(options?: { verb: PaginationMessageVerb }): string {
     const startingPoint = determinePaginationStartingPoint();
     const endPoint = determinePaginationEndPoint();
     const verb = options ? options.verb : PaginationMessageVerb.DISPLAYING;
@@ -95,7 +99,7 @@ const useTsPaginator = (totalRecordCountProp: number, rowsPerPageProp: number, c
     return message;
   }
   // disable the ability to change the page if the records are below 10
-  function determinePaginationDisabledState(): boolean {
+  function _determinePaginationDisabledState(): boolean {
     let startingPoint: number | undefined;
     let endPoint: number | undefined;
     startingPoint = rowsPerPage * currentPage + 1;
@@ -106,15 +110,15 @@ const useTsPaginator = (totalRecordCountProp: number, rowsPerPageProp: number, c
     return determinePageCount(totalRecordCount, rowsPerPage) === 1 && (endPoint === totalRecordCount ? true : false);
   }
 
-  function handleChangeTotalRecordCount(newTotalRecordCount: number): void {
-    setTotalRecordCount(newTotalRecordCount)
+  function _handleChangeTotalRecordCount(newTotalRecordCount: number): void {
+    setTotalRecordCount(newTotalRecordCount);
   }
 
-  function handleChangePage(newPage: number): void {
+  function _handleChangePage(newPage: number): void {
     setCurrentPage(newPage - 1);
   }
 
-  function handleChangeRowsPerPage(newRowsPerPage: number): void {
+  function _handleChangeRowsPerPage(newRowsPerPage: number): void {
     setRowsPerPage(newRowsPerPage);
     setCurrentPage(0);
   }
@@ -123,14 +127,16 @@ const useTsPaginator = (totalRecordCountProp: number, rowsPerPageProp: number, c
     totalRecordCount,
     rowsPerPage,
     currentPage,
-    determinePaginationMessage,
-    determineRowsPerPageOptions,
-    determinePaginationDisabledState,
-    handleChangeTotalRecordCount,
-    handleChangePage,
-    handleChangeRowsPerPage,
+    //
+    _determinePaginationMessage,
+    _determineRowsPerPageOptions,
+    _determinePaginationDisabledState,
+    //
+    _handleChangeTotalRecordCount,
+    _handleChangePage,
+    _handleChangeRowsPerPage,
   };
-}
+};
 
 export default useTsPaginator;
 module.exports = useTsPaginator;

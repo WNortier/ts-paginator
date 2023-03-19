@@ -24,7 +24,9 @@
     "javascript",
     "typescript",
     "pagination",
-    "frontend"
+    "frontend",
+    "react",
+    "nextjs"
   ],
   "author": "warwick nortier",
   "license": "ISC",

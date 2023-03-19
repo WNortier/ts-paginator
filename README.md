@@ -40,7 +40,7 @@ Instantiate the `useTsPaginator` hook with the following arguments:
 
 Not required to build working pagination, but might be useful. Coming soon.
 
-## Example
+## Usage
 
 `npm i --save ts-paginator`
 

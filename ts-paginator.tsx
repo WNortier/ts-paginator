@@ -1,12 +1,16 @@
 import React from 'react';
 /**
  * A helper function for pagination
+ * @totalRecordCountProp: Argument The total count of records,
+ * @currentPageProp: Argument The current page selection (zero indexed),
+ * @rowsPerPageProp: Argument The rows per page (default 10),
+ * @returns
  * @totalRecordCount Variable The total count of records
  * @currentPage Variable The current page selection (zero indexed)
  * @rowsPerPage Variable The current rows per page selection
+ * @_handleChangeTotalRecordCount Function to change the @totalRecordCount value
  * @_handleChangePage Function to change the @currentPage value
  * @_handleChangeRowsPerPage Function to handle the @rowsPerPage value
- * @returns
  */
 type rowsPerPagePropVal = 10;
 const useTsPaginator = (
@@ -120,8 +124,8 @@ const useTsPaginator = (
 
   return {
     totalRecordCount,
-    rowsPerPage,
     currentPage,
+    rowsPerPage,
     //
     _determinePaginationMessage,
     _determineRowsPerPageOptions,

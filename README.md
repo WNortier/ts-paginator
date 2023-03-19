@@ -16,11 +16,11 @@
 
 ## Args
 
-| arg                | Description                         |
-| ------------------ | ----------------------------------- |
-| `totalRecordCount` | The total count of records          |
-| `rowsPerPage`      | The current rows per page selection |
-| `currentPage`      | The current page selection (zero indexed)         |
+| arg                | Description                               |
+| ------------------ | ----------------------------------------- |
+| `totalRecordCount` | The total count of records                |
+| `rowsPerPage`      | The current rows per page selection       |
+| `currentPage`      | The current page selection (zero indexed) |
 
 ## Example
 

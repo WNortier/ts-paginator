@@ -1,17 +1,22 @@
-import tsPaginator from '../ts-paginator';
+import useTsPaginator from '../ts-paginator';
+import { renderHook, waitFor } from "@testing-library/react";
+import React from 'react';
 describe('ts-paginator', () => {
-  const paginator = tsPaginator();
+  const { result } = renderHook(() => useTsPaginator(20, 10, 0));
+  const { totalRecordCount, rowsPerPage, currentPage, determinePaginationMessage, determinePaginationDisabledState, determineRowsPerPageOptions, handleChangePage, handleChangeRowsPerPage } = result.current;
+
+  test('It should initialize correctly', () => {
+    expect(totalRecordCount).toBe(20);
+    expect(rowsPerPage).toBe(10);
+    expect(currentPage).toBe(0);
+  })
   test('It should calc the pagination message', () => {
-    expect(paginator.determinePaginationMessage(10, 10, 0)).toBe('Displaying 1 to 10 of 10 records');
-  });
-  test('It should calc the pagination message', () => {
-    expect(paginator.determinePaginationDisabledState(10, 10, 0)).toBe(true);
-    expect(paginator.determinePaginationDisabledState(100, 50, 0)).toBe(false);
+    expect(determinePaginationMessage()).toBe('Displaying 1 to 10 of 20 records');
   });
   test('It should calc the options for the rows per page', () => {
-    expect(paginator.determineRowsPerPageOptions(9)).toEqual([10]);
-    expect(paginator.determineRowsPerPageOptions(50)).toEqual([10, 25, 50]);
-    expect(paginator.determineRowsPerPageOptions(400)).toEqual([10, 25, 50, 100]);
-    expect(paginator.determineRowsPerPageOptions(1000)).toEqual([10, 25, 50, 100, 250, 500]);
+    expect(determineRowsPerPageOptions()).toEqual([10, 25, 50]);
+  });
+  test('It should calc the disabled state', () => {
+    expect(determinePaginationDisabledState()).toBe(false);
   });
 });

@@ -101,8 +101,10 @@ const useTsPaginator = (
   function _determinePaginationPages(): number[] {
     const paginationPages: number[] = [];
     const pageCount = determinePageCount(totalRecordCount, rowsPerPage);
-    if (pageCount > 3) paginationPages.push(1, 0, pageCount);
-    else paginationPages.push(1, 2, 3);
+    if (pageCount === 3) paginationPages.push(1, 2, 3)
+    else if (pageCount > 3) paginationPages.push(1, 0, pageCount)
+    else if (pageCount === 2) paginationPages.push(1, 2)
+    else paginationPages.push(1);
     return paginationPages;
   }
   // disable the ability to change the page if the records are below 10

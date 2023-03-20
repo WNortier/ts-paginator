@@ -94,4 +94,4 @@ function MyComponent() {
 
 https://github.com/WNortier/ts-paginator-example
 
-![ts-paginator-example](./assets/ts-paginator-new.gif)
+![ts-paginator-example](./assets/ts-paginator.gif)

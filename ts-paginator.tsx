@@ -169,6 +169,8 @@ const useTsPaginator = (
 
   function _handleChangeTotalRecordCount(newTotalRecordCount: number): void {
     setTotalRecordCount(newTotalRecordCount);
+    setCurrentPage(0);
+    setRowsPerPage(10);
   }
 
   function _handleChangePage(newPage: number): void {

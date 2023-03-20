@@ -37,13 +37,13 @@ const useTsPaginator = (
     _determineRowsPerPageOptions();
     _determinePaginationMessage();
     _determinePaginationDisabledState();
-    _determinePaginationPages()
+    _determinePaginationPages();
   }, [totalRecordCount]);
 
   React.useEffect(() => {
     _determinePaginationMessage();
     _determinePaginationDisabledState();
-    _determinePaginationPages()
+    _determinePaginationPages();
   }, [rowsPerPage]);
 
   // determine count works out how many pages there are

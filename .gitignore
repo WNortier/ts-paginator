@@ -1,3 +1,5 @@
 node_modules
 /lib
 ../try
+.DS_Store
+assets/.DS_Store

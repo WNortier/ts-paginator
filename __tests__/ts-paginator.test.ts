@@ -42,6 +42,7 @@ describe('ts-paginator', () => {
       currentPage,
       _determinePaginationMessage,
       _determinePaginationDisabledState,
+      _determinePaginationPages,
     } = result.current;
     test('It should initialize correctly with 21 records', () => {
       expect(totalRecordCount).toBe(7);
@@ -55,6 +56,10 @@ describe('ts-paginator', () => {
 
     test('It should calc the disabled state as true since there are less than 10 records', () => {
       expect(_determinePaginationDisabledState()).toBe(true);
+    });
+
+    test('It should calc the pagination pages', () => {
+      expect(_determinePaginationPages()).toEqual([1]);
     });
   });
   describe('ts-paginator with 351 records', () => {
@@ -86,7 +91,45 @@ describe('ts-paginator', () => {
       expect(_determinePaginationDisabledState()).toBe(false);
     });
     test('It should calc the pagination pages', () => {
-      expect(_determinePaginationPages()).toEqual([1, 0, 3, 4, 5, 6, 7, 0, 36]);
+      expect(_determinePaginationPages()).toEqual([1, 0, 4, 5, 6, 7, 8, 0, 36]);
+    });
+  });
+
+  describe('test determinePaginationPages with less than 70 records', () => {
+    test('It should calc the pagination pages when totalRecordCount is 10 and currentPage is 0', () => {
+      const { result } = renderHook(() => useTsPaginator(10, 0));
+      const { _determinePaginationPages } = result.current;
+      expect(_determinePaginationPages()).toEqual([1]);
+    });
+    test('It should calc the pagination pages when totalRecordCount is 60 and currentPage is 0', () => {
+      const { result } = renderHook(() => useTsPaginator(60, 0));
+      const { _determinePaginationPages } = result.current;
+      expect(_determinePaginationPages()).toEqual([1, 2, 3, 4, 5, 6]);
+    });
+    test('It should calc the pagination pages when totalRecordCount is 70 and currentPage is 0', () => {
+      const { result } = renderHook(() => useTsPaginator(70, 0));
+      const { _determinePaginationPages } = result.current;
+      expect(_determinePaginationPages()).toEqual([1, 2, 3, 4, 5, 6, 7]);
+    });
+  });
+
+  describe('test determinePaginationPages with 900 records', () => {
+    test('It should calc the pagination pages when totalRecordCount is 900 and currentPage is 1', () => {
+      const { result } = renderHook(() => useTsPaginator(900, 1));
+      const { _determinePaginationPages } = result.current;
+      expect(_determinePaginationPages()).toEqual([1, 2, 3, 4, 5, 0, 90]);
+    });
+
+    test('It should calc the pagination pages when totalRecordCount is 900 and currentPage is 3', () => {
+      const { result } = renderHook(() => useTsPaginator(900, 3));
+      const { _determinePaginationPages } = result.current;
+      expect(_determinePaginationPages()).toEqual([1, 2, 3, 4, 5, 6, 0, 90]);
+    });
+
+    test('It should calc the pagination pages when totalRecordCount is 900 and currentPage is 4', () => {
+      const { result } = renderHook(() => useTsPaginator(900, 4));
+      const { _determinePaginationPages } = result.current;
+      expect(_determinePaginationPages()).toEqual([1, 0, 3, 4, 5, 6, 7, 0, 90]);
     });
   });
 });

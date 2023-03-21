@@ -97,6 +97,19 @@ const useTsPaginator = (
     return message;
   }
 
+
+  // disable the ability to change the page if the records are below 10
+  function _determinePaginationDisabledState(): boolean {
+    let startingPoint: number | undefined;
+    let endPoint: number | undefined;
+    startingPoint = rowsPerPage * currentPage + 1;
+    endPoint = Math.min(startingPoint + rowsPerPage, totalRecordCount) - 1;
+    let theCurrentPage = currentPage;
+    if (++theCurrentPage === determinePageCount(totalRecordCount, rowsPerPage))
+      endPoint = Math.min(startingPoint + rowsPerPage, totalRecordCount);
+    return determinePageCount(totalRecordCount, rowsPerPage) === 1 && (endPoint === totalRecordCount ? true : false);
+  }
+
   function _determinePaginationPages(): number[] {
     let paginationPages: number[] = [];
     const pageCount = determinePageCount(totalRecordCount, rowsPerPage);
@@ -125,46 +138,48 @@ const useTsPaginator = (
         paginationPages = [1, 2, 3, 4, 5, 6];
         break;
       }
+      case 7: {
+        paginationPages = [1, 2, 3, 4, 5, 6, 7];
+        break;
+      }
       default: {
-        // handle first three currentPage values
-        if (currentPage === 0) paginationPages = [1, 2, 3, 4, 5, 0, pageCount];
-        else if (currentPage === 1) paginationPages = [1, 2, 3, 4, 0, pageCount];
-        else if (currentPage === 2) paginationPages = [1, 2, 3, 4, 5, 0, pageCount];
-        // handle last three currentPage values
-        else if (currentPage === pageCount)
-          paginationPages = [1, 0, currentPage - 4, currentPage - 3, currentPage - 2, currentPage - 1, currentPage];
-        else if (currentPage === pageCount - 1)
-          paginationPages = [1, 0, currentPage - 2, currentPage - 1, currentPage, pageCount];
-        else if (currentPage === pageCount - 2)
-          paginationPages = [1, 0, currentPage - 2, currentPage - 1, currentPage, currentPage + 1, pageCount];
-        // handle others
-        else
+        const page = currentPage + 1
+        const isFirstFourOrLastFourPages = ([1, 2, 3, 4].includes(page) || [pageCount, pageCount - 1, pageCount - 2, pageCount - 3, pageCount - 4].includes(page))
+        const pageOne = page === 1
+        const pageTwoOrThree = (page === 2 || page === 3)
+        const pageFour = (page === 4)
+        //
+        const lastPage = page === pageCount
+        const secondOrThirdLastPage = (page === pageCount - 1 || page === pageCount - 2)
+        const fourthLastPage = (page === pageCount - 3)
+
+        if (isFirstFourOrLastFourPages) {
+          if (pageOne) paginationPages = [1, 2, 3, 4, 5, 0, pageCount];
+          else if (pageTwoOrThree) paginationPages = [1, 2, 3, 4, 5, 0, pageCount];
+          else if (pageFour) paginationPages = [1, 2, 3, 4, 5, 6, 0, pageCount];
+          else if (lastPage) {
+            paginationPages = [1, 0, pageCount - 4, pageCount - 3, pageCount - 2, pageCount - 1, pageCount];
+          }
+          else if (secondOrThirdLastPage)
+            paginationPages = [1, 0, pageCount - 4, pageCount - 3, pageCount - 2, pageCount - 1, pageCount];
+          else if (fourthLastPage)
+            paginationPages = [1, 0, pageCount - 5, pageCount - 4, pageCount - 3, pageCount - 2, pageCount - 1, pageCount];
+        } else
           paginationPages = [
             1,
             0,
-            currentPage - 2,
             currentPage - 1,
             currentPage,
             currentPage + 1,
             currentPage + 2,
+            currentPage + 3,
             0,
             pageCount,
           ];
-        break;
+        break
       }
     }
     return paginationPages;
-  }
-  // disable the ability to change the page if the records are below 10
-  function _determinePaginationDisabledState(): boolean {
-    let startingPoint: number | undefined;
-    let endPoint: number | undefined;
-    startingPoint = rowsPerPage * currentPage + 1;
-    endPoint = Math.min(startingPoint + rowsPerPage, totalRecordCount) - 1;
-    let theCurrentPage = currentPage;
-    if (++theCurrentPage === determinePageCount(totalRecordCount, rowsPerPage))
-      endPoint = Math.min(startingPoint + rowsPerPage, totalRecordCount);
-    return determinePageCount(totalRecordCount, rowsPerPage) === 1 && (endPoint === totalRecordCount ? true : false);
   }
 
   function _handleChangeTotalRecordCount(newTotalRecordCount: number): void {

@@ -16,7 +16,6 @@
     "version": "npm run format && git add -A .",
     "postversion": "git push && git push --tags"
   },
-  "deprecated": "Consider upgrading ts-paginator - a bug was fixed in v1.6.0 to handle an input parameter of 0 records - please see release notes on npm: https://www.npmjs.com/package/ts-paginator",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WNortier/ts-paginator.git"

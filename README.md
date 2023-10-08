@@ -90,6 +90,14 @@ function MyComponent() {
 
 <br />
 
+## Release Notes
+
+*`1.6.0`* 
+
+- Adressed a shortcoming in `_determinePaginationMessage` not properly handling a `totalRecordCount` of `0`
+- Added an optional `noun` key to the `_determinePaginationMessage` `options` parameter
+- Added an optional `hideMessageOnZeroRecords` key to the `_determinePaginationMessage` `options` parameter which, if set, returns the message as an empty string
+
 ## Example
 
 https://github.com/WNortier/ts-paginator-example

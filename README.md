@@ -38,7 +38,7 @@ Instantiate the `useTsPaginator` hook with the following arguments:
 
 | Function                           | Description                                                                                             | Args                       | Return Type | Example Returns                    |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------- | ----------- | ---------------------------------- |
-| `determinePaginationMessage`       | Calculates the pagination message                                                                       | `options?: {verb: string}` | string      | `Displaying 1 to 10 of 20 records` |
+| `determinePaginationMessage`       | Calculates the pagination message                                                                       | `options?: {verb: 'Showing' OR 'Displaying', noun?: string: hideMessageOnZeroRecords: boolean}` | string      | `Displaying 1 to 10 of 20 records` |
 | `determineRowsPerPageOptions`      | Calculates the rows per page options                                                                    |                            | number[]    | `[10]`                             |
 | `determinePaginationPages`         | Calculates the pagination pages and uses `0` as a range placeholder for page ranges greather than three |                            | number[]    | `[1, 2]`                           |
 | `determinePaginationDisabledState` | Can be used to disable the previous page or next page button                                            |                            | boolean     | `true`                             |
@@ -82,7 +82,7 @@ function MyComponent() {
     _handleChangePage,
   } = useTsPaginator(20, 0);
 
-  const message = _determinePaginationMessage({ verb: 'Showing' }); // Showing 1 to 10 of 20 records
+  const message = _determinePaginationMessage({ verb: 'Showing', noun: 'entries' }); // Showing 1 to 10 of 20 entries
 
   return <p>{message}</p>;
 }

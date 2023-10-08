@@ -21,7 +21,7 @@ const useTsPaginator = (
   totalRecordCount: number;
   rowsPerPage: number;
   currentPage: number;
-  _determinePaginationMessage: (options?: { verb: 'Showing' | 'Displaying' }) => string;
+  _determinePaginationMessage: (options?: { verb: 'Showing' | 'Displaying', noun?: string, hideMessageOnZeroRecords?: boolean }) => string;
   _determineRowsPerPageOptions: () => number[];
   _determinePaginationPages: () => number[];
   _determinePaginationDisabledState: () => boolean;
@@ -89,11 +89,14 @@ const useTsPaginator = (
     return endPoint;
   }
 
-  function _determinePaginationMessage(options?: { verb: 'Displaying' | 'Showing' }): string {
+  function _determinePaginationMessage(options?: { verb: 'Displaying' | 'Showing', noun?: string, hideMessageOnZeroRecords?: boolean }): string {
     const startingPoint = determinePaginationStartingPoint();
     const endPoint = determinePaginationEndPoint();
     const verb = options ? options.verb : 'Displaying';
-    const message = `${verb} ${startingPoint} to ${endPoint} of ${totalRecordCount} records`;
+    const noun = options?.noun ? options.noun.toLowerCase() : 'records'
+    let message = `${verb} ${startingPoint} to ${endPoint} of ${totalRecordCount} ${noun}`;
+    if (endPoint === -1 && options?.hideMessageOnZeroRecords) return ""
+    else if (endPoint === -1 && !options?.hideMessageOnZeroRecords) message = `No ${noun} to ${options && options.verb === 'Showing' ? 'show' : 'display'}`
     return message;
   }
 
@@ -114,6 +117,7 @@ const useTsPaginator = (
     let paginationPages: number[] = [];
     const pageCount = determinePageCount(totalRecordCount, rowsPerPage);
     switch (pageCount) {
+      case 0:
       case 1: {
         paginationPages = [1];
         break;

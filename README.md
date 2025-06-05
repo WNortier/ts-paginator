@@ -18,7 +18,7 @@
 
 <br />
 
-> ### `ts-paginator` is a TypeScript pagination hook for React or NextJS
+> ### ts-paginator is an unopinionated TypeScript pagination hook for React or NextJS — designed to let you build your own pagination UI.
 
 <br />
 
@@ -52,12 +52,6 @@ Instantiate the `useTsPaginator` hook with the following arguments:
 | `handleChangeTotalRecordCount` | Changes the total record count | `newTotalRecordCount: number` | void        |
 | `handleChangeRowsPerPage`      | Changes the rows per page      | `newRowsPerPage: number`      | void        |
 | `handleChangePage`             | Changes the current page       | `newPage: number`             | void        |
-
-<br />
-
-## Extra Functions
-
-Not required to build working pagination, but might be useful. Coming soon.
 
 <br />
 
